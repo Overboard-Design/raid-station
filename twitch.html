@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitch</title>
+     <link rel="icon" type="image/x-icon" href="raidfav.png">
+    <meta name="description" content="Raid-Station Gaming Community">
+    <meta name="keywords" content="raid, station, raid-station, raidstation  gaming, clan, guild, community, pvp, pve, pc, gamer, naval, action, call, of, duty, warframe
+    total, war, helldivers, twitch, stream, streamers, content, creators, youtube, Holdfast, payday, foxhole, pc, steam, xbox, playstation">
+    <meta name="author" content="Overboard Design">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3162648523349400">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3162648523349400"
+     crossorigin="anonymous"></script>
+    
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Google Font -->
+    
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+
+    <!-- Main Content -->
+
+    <div class="title">
+        <h1>Raid-Station Live Streams</h1>
+    </div>
+    
+  <!-- Twitch Embed JS API -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+<style>
+  
+  .content {
+    text-align: center; /* Optional: center titles if you want */
+    margin-bottom: 40px;
+  }
+
+  .content .twitch-player {
+    width: 854px;
+    height: 480px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .content .twitch-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+
+    .content .twitch-player iframe {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+</style>
+
+<!-- bruj_haha -->
+<div class="title">
+  <h2>bruja_haha</h2>
+</div>
+<div class="content">
+  <div id="bruja_haha" class="twitch-player"></div>
+</div>
+
+<!-- shamus217 -->
+<div class="title">
+  <h2>shamus217</h2>
+</div>
+<div class="content">
+  <div id="player-shamus217" class="twitch-player"></div>
+</div>
+
+<!-- theharryballzack-->
+<div class="title">
+  <h2>theharryballzack</h2>
+</div>
+<div class="content">
+  <div id="player-theharryballzack" class="twitch-player"></div>
+</div>
+<!-- -->
+<div class="title">
+  <h2>bellatrixbattz</h2>
+</div>
+<div class="content">
+  <div id="player-bellatrixbattz" class="twitch-player"></div>
+</div>
+
+
+
+<!-- JavaScript to Load Players -->
+<script type="text/javascript">
+  const parentDomain = "www.raid-station.com";
+
+  new Twitch.Player("player-bruja_haha", {
+    width: "100%",
+    height: "100%",
+    channel: "bruja_haha",
+    parent: [parentDomain],
+    muted: true
+  });
+
+  new Twitch.Player("player-shamus217", {
+    width: "100%",
+    height: "100%",
+    channel: "shamus217",
+    parent: [parentDomain],
+    muted: true
+  });
+  
+  new Twitch.Player("player-theharryballzack", {
+    width: "100%",
+    height: "100%",
+    channel: "theharryballzack",
+    parent: [parentDomain],
+    muted: true
+  });
+    new Twitch.Player("player-bellatrixbattz", {
+    width: "100%",
+    height: "100%",
+    channel: "bellatrixbattz",
+    parent: [parentDomain],
+    muted: true
+  });
+</script>
+
+
+   <div class="menu-container">
+    <a href="index.html" class="menu-item">
+  <i class="fas fa-home"></i> Return to Homepage
+</a>
+</div>
+</div>
+<div>
+<footer>
+       By Overboard Design.
+</footer>
+</div> 
+</body>
+</html>
