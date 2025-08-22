@@ -20,66 +20,111 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-     <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
- .video-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      width: 100%;
-      max-width: 100%;
-     
-    }
 
-    .video-container {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background-color: #000;
-      overflow: hidden;
-    }
-
-    .video-container iframe,
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    @media (max-width: 600px) {
-      .video-gallery {
-        grid-template-columns: 1fr;
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    }
-  </style>  
+
+      body {
+        font-family: 'Audiowide', sans-serif;
+        
+      
+      }
+
+      .title {
+        text-align: center;
+        padding: 40px 0 20px;
+      }
+
+      .video-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .video-container {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      .menu-container {
+        text-align: center;
+        margin-top: 60px;
+        padding: 20px;
+      }
+
+      .menu-item {
+        text-decoration: none;
+        font-size: 1.2em;
+      }
+
+      .menu-item i {
+        margin-right: 8px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+        
+      }
+
+      @media (max-width: 600px) {
+        .video-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>  
 </head>
 <body>
   <div class="title">
-  <h1>Music</h1>
-  </div>
- <div class="video-gallery">
-    <!-- YouTube Embed -->
-    <div class="video-container">
-      <iframe  src= "https://www.youtube.com/embed/V-73BmH5VCY?si=qVUY8yCl_RI6Zh_V"  allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe  src="https://www.youtube.com/embed/QYp9qlPeEfM?si=jzm-vHHVoWCG_oDV"   allowfullscreen></iframe>
-    </div>
-     <div class="video-container">
-      <iframe  src="https://www.youtube.com/embed/-1I2lQao9iM?si=s6kfRCxTR0Uzz6lT"  allowfullscreen></iframe>
-    </div>
-     <div class="video-container">
-      <iframe  src="https://www.youtube.com/embed/t-MHpGTvWOg?si=DLmfdIDHAitvCBKS"   allowfullscreen></iframe>
-    </div>
-     <div class="video-container">
-      <iframe  src="https://www.youtube.com/embed/d5F-eZ1xI5I?si=C3Yy-7PBWVVqat7f"  allowfullscreen></iframe>
-    </div>
-    
+    <h1>Music</h1>
   </div>
 
+  <main>
+    <div class="video-gallery">
+      <!-- YouTube Embeds -->
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/V-73BmH5VCY?si=qVUY8yCl_RI6Zh_V" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/QYp9qlPeEfM?si=jzm-vHHVoWCG_oDV" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/-1I2lQao9iM?si=s6kfRCxTR0Uzz6lT" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/t-MHpGTvWOg?si=DLmfdIDHAitvCBKS" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/d5F-eZ1xI5I?si=C3Yy-7PBWVVqat7f" allowfullscreen></iframe>
+      </div>
+    </div>
+  </main>
+
+  <div class="menu-container">
+    <a href="index.html" class="menu-item">
+      <i class="fas fa-home"></i> Return to Homepage
+    </a>
+  </div>
+
+  <footer>
+    By Overboard Design.
+  </footer>
 </body>
+</html>
