@@ -73,6 +73,14 @@
   <div id="player-bruja_haha" class="twitch-player"></div>
 </div>
 
+<!-- vyntricmeida -->
+<div class="title">
+  <h2>vyntricmeida</h2>
+</div>
+<div class="content">
+  <div id="player-vyntricmeida" class="twitch-player"></div>
+</div>
+
 <!-- shamus217 -->
 <div class="title">
   <h2>shamus217</h2>
@@ -95,14 +103,20 @@
 <div class="content">
   <div id="player-bellatrixbattz" class="twitch-player"></div>
 </div>
-<!-- vyntricmeida -->
+<!--mecca775-->
 <div class="title">
-  <h2>vyntricmeida</h2>
+  <h2>mecca775</h2>
 </div>
 <div class="content">
-  <div id="player-vyntricmeida" class="twitch-player"></div>
+  <div id="player-mecca775" class="twitch-player"></div>
 </div>
-
+<!--Nockon95-->
+<div class="title">
+  <h2>Nockon95</h2>
+</div>
+<div class="content">
+  <div id="player-Nockon95" class="twitch-player"></div>
+</div>
 
 
 <!-- JavaScript to Load Players -->
@@ -114,6 +128,13 @@
     width: "100%",
     height: "100%",
     channel: "bruja_haha",
+    parent: [parentDomain],
+    muted: true
+  });
+      new Twitch.Player("player-vyntricmeida", {
+    width: "100%",
+    height: "100%",
+    channel: "vyntricmeida",
     parent: [parentDomain],
     muted: true
   });
@@ -138,13 +159,22 @@
     parent: [parentDomain],
     muted: true
   });
-     new Twitch.Player("player-vyntricmeida", {
+      new Twitch.Player("player-mecca775", {
     width: "100%",
     height: "100%",
-    channel: "vyntricmeida",
+    channel: "mecca775",
     parent: [parentDomain],
     muted: true
   });
+      new Twitch.Player("player-Nockon95", {
+    width: "100%",
+    height: "100%",
+    channel: "Nockon95",
+    parent: [parentDomain],
+    muted: true
+  });
+
+ 
 </script>
 
 
