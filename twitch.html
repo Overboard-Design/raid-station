@@ -81,20 +81,20 @@
   <div id="player-vyntricmedia" class="twitch-player"></div>
 </div>
 
-<!-- ButtBoi_ -->
-<div class="title">
-  <h2>ButtBoi_</h2>
-</div>
-<div class="content">
-  <div id="player-ButtBoi_" class="twitch-player"></div>
-</div>
-
 <!-- theharryballzack-->
 <div class="title">
   <h2>theharryballzack</h2>
 </div>
 <div class="content">
   <div id="player-theharryballzack" class="twitch-player"></div>
+</div>
+
+<!-- ButtBoi_ -->
+<div class="title">
+  <h2>ButtBoi_</h2>
+</div>
+<div class="content">
+  <div id="player-ButtBoi_" class="twitch-player"></div>
 </div>
 
 <!-- countrymama2 -->
@@ -114,20 +114,29 @@
   class="twitch-player"></div>
 </div>
 
-<!-- nerdie_nomad -->
-<div class="title">
-  <h2>nerdie_nomad</h2>
-</div>
-<div class="content">
-  <div id="player-nerdie_nomad" class="twitch-player"></div>
-</div>
-
 <!-- Qewiii -->
 <div class="title">
   <h2>Qewiii</h2>
 </div>
 <div class="content">
   <div id="player-Qewiii" class="twitch-player"></div>
+</div>
+
+<!-- scambamreyna -->
+<div class="title">
+  <h2>scambamreyna</h2>
+</div>
+<div class="content">
+  <div id="player-scambamreyna" 
+  class="twitch-player"></div>
+</div>
+
+<!-- nerdie_nomad -->
+<div class="title">
+  <h2>nerdie_nomad</h2>
+</div>
+<div class="content">
+  <div id="player-nerdie_nomad" class="twitch-player"></div>
 </div>
 
 <!-- bellatrixbattz -->
@@ -174,6 +183,13 @@
     parent: [parentDomain],
     muted: true
   });
+   new Twitch.Player("player-theharryballzack", {
+    width: "100%",
+    height: "100%",
+    channel: "theharryballzack",
+    parent: [parentDomain],
+    muted: true
+  });
   new Twitch.Player("player-ButtBoi_", {
     width: "100%",
     height: "100%",
@@ -181,13 +197,7 @@
     parent: [parentDomain],
     muted: true
   });
-      new Twitch.Player("player-theharryballzack", {
-    width: "100%",
-    height: "100%",
-    channel: "theharryballzack",
-    parent: [parentDomain],
-    muted: true
-  });
+
   new Twitch.Player("player-countrymama2", {
     width: "100%",
     height: "100%",
@@ -203,18 +213,24 @@
     parent: [parentDomain],
     muted: true
   });
-
+    new Twitch.Player("player-Qewiii", {
+    width: "100%",
+    height: "100%",
+    channel: "Qewiii",
+    parent: [parentDomain],
+    muted: true
+  });
+      new Twitch.Player("player-scambamreyna", {
+    width: "100%",
+    height: "100%",
+    channel: "scambamreyna",
+    parent: [parentDomain],
+    muted: true
+  });
     new Twitch.Player("player-nerdie_nomad", {
     width: "100%",
     height: "100%",
     channel: "nerdie_nomad",
-    parent: [parentDomain],
-    muted: true
-  });
-      new Twitch.Player("player-Qewiii", {
-    width: "100%",
-    height: "100%",
-    channel: "Qewiii",
     parent: [parentDomain],
     muted: true
   });
