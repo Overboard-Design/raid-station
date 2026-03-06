@@ -3,14 +3,13 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Raid-Station Gallery</title>
+<title>Raid Station Gallery</title>
 
 <link rel="icon" type="image/x-icon" href="raidfav.png">
 
 <meta name="description" content="Raid Station Gaming Community">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -18,8 +17,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-/* Lightbox */
-#lightbox{
+.lightbox{
 position:fixed;
 top:0;
 left:0;
@@ -27,27 +25,27 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.9);
 display:none;
-align-items:center;
 justify-content:center;
-z-index:999;
+align-items:center;
+z-index:9999;
 }
 
-#lightbox img{
-max-width:90%;
-max-height:90%;
-}
-
-#lightbox.active{
+.lightbox:target{
 display:flex;
 }
 
-#lightbox span{
+.lightbox img{
+max-width:95%;
+max-height:95%;
+}
+
+.lightbox .close{
 position:absolute;
 top:30px;
 right:40px;
 font-size:40px;
 color:white;
-cursor:pointer;
+text-decoration:none;
 }
 </style>
 
@@ -58,6 +56,7 @@ cursor:pointer;
 <div class="title">
 <h1>Raid-Station Gallery</h1>
 </div>
+
 
 <div class="gallery">
 
@@ -78,8 +77,8 @@ cursor:pointer;
 <a href="#warhammer1" class="gallery-item"><img src="warhammer1.jpg" alt="warhammer1" loading="lazy"></a>
 <a href="#empire1" class="gallery-item"><img src="empire1.png" alt="empire1" loading="lazy"></a>
 <a href="#raidlogo" class="gallery-item"><img src="raid.png" alt="raid-station" loading="lazy"></a>
-<a href="#Dollhouse" class="gallery-item"><img src="Dollhouse playtest.png" alt="dollhouse" loading="lazy"></a>
-<a href="#7daysworm" class="gallery-item"><img src="7daysworm.png" alt="worm" loading="lazy"></a>
+<a href="#dollhouse" class="gallery-item"><img src="Dollhouse playtest.png" alt="dollhouse" loading="lazy"></a>
+<a href="#worm" class="gallery-item"><img src="7daysworm.png" alt="worm" loading="lazy"></a>
 <a href="#gif2" class="gallery-item"><img src="raid-station.com2.gif" alt="gif2" loading="lazy"></a>
 <a href="#holdfast1" class="gallery-item"><img src="holdfast1.png" alt="holdfast" loading="lazy"></a>
 <a href="#gif1" class="gallery-item"><img src="Raid-Station.com1.gif" alt="gif1" loading="lazy"></a>
@@ -89,11 +88,37 @@ cursor:pointer;
 <a href="#empire2" class="gallery-item"><img src="empire2.png" alt="empire2" loading="lazy"></a>
 
 </div>
-<!-- LIGHTBOX -->
-<div id="lightbox">
-<span>&times;</span>
-<img src="">
-</div>
+
+
+<!-- LIGHTBOX IMAGES -->
+
+<div id="nms1" class="lightbox"><a href="#" class="close">&times;</a><img src="nms1.png"></div>
+<div id="dotd2" class="lightbox"><a href="#" class="close">&times;</a><img src="dotd2.png"></div>
+<div id="dotd" class="lightbox"><a href="#" class="close">&times;</a><img src="dotd.png"></div>
+<div id="lbu" class="lightbox"><a href="#" class="close">&times;</a><img src="lbu.png"></div>
+<div id="7days3" class="lightbox"><a href="#" class="close">&times;</a><img src="7days3.png"></div>
+<div id="7days2" class="lightbox"><a href="#" class="close">&times;</a><img src="7days2.png"></div>
+<div id="7daybuh" class="lightbox"><a href="#" class="close">&times;</a><img src="7daybuh.png"></div>
+<div id="ace3" class="lightbox"><a href="#" class="close">&times;</a><img src="ace3.png"></div>
+<div id="ace2" class="lightbox"><a href="#" class="close">&times;</a><img src="ace2.png"></div>
+<div id="ace1" class="lightbox"><a href="#" class="close">&times;</a><img src="ace1.png"></div>
+<div id="machetefarms" class="lightbox"><a href="#" class="close">&times;</a><img src="machetefarms.png"></div>
+<div id="sot2" class="lightbox"><a href="#" class="close">&times;</a><img src="sot2.png"></div>
+<div id="sot1" class="lightbox"><a href="#" class="close">&times;</a><img src="sot1.png"></div>
+<div id="sotrs" class="lightbox"><a href="#" class="close">&times;</a><img src="sot rs.png"></div>
+<div id="warhammer1" class="lightbox"><a href="#" class="close">&times;</a><img src="warhammer1.jpg"></div>
+<div id="empire1" class="lightbox"><a href="#" class="close">&times;</a><img src="empire1.png"></div>
+<div id="raidlogo" class="lightbox"><a href="#" class="close">&times;</a><img src="raid.png"></div>
+<div id="dollhouse" class="lightbox"><a href="#" class="close">&times;</a><img src="Dollhouse playtest.png"></div>
+<div id="worm" class="lightbox"><a href="#" class="close">&times;</a><img src="7daysworm.png"></div>
+<div id="gif2" class="lightbox"><a href="#" class="close">&times;</a><img src="raid-station.com2.gif"></div>
+<div id="holdfast1" class="lightbox"><a href="#" class="close">&times;</a><img src="holdfast1.png"></div>
+<div id="gif1" class="lightbox"><a href="#" class="close">&times;</a><img src="Raid-Station.com1.gif"></div>
+<div id="gif3" class="lightbox"><a href="#" class="close">&times;</a><img src="raid-station.com3.gif"></div>
+<div id="napoleon1" class="lightbox"><a href="#" class="close">&times;</a><img src="napoleon1.JPG"></div>
+<div id="card" class="lightbox"><a href="#" class="close">&times;</a><img src="RAID-STATION Card.png"></div>
+<div id="empire2" class="lightbox"><a href="#" class="close">&times;</a><img src="empire2.png"></div>
+
 
 <div class="menu-container">
 <a href="index.html" class="menu-item">
@@ -104,25 +129,6 @@ cursor:pointer;
 <footer>
 By Overboard Design.
 </footer>
-
-<script>
-
-const lightbox = document.getElementById('lightbox')
-const lightboxImg = lightbox.querySelector('img')
-
-document.querySelectorAll('.gallery a').forEach(link=>{
-link.addEventListener('click', e=>{
-e.preventDefault()
-lightbox.classList.add('active')
-lightboxImg.src = link.href
-})
-})
-
-lightbox.addEventListener('click', ()=>{
-lightbox.classList.remove('active')
-})
-
-</script>
 
 </body>
 </html>
