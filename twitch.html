@@ -1,205 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<title>Twitch</title>
+    <meta charset="UTF-8">
+    <title>Twitch</title>
+     <link rel="icon" type="image/x-icon" href="raidfav.png">
+    <meta name="description" content="Raid-Station Gaming Community">
+    <meta name="keywords" content="raid, station, raid-station, raidstation  gaming, clan, guild, community, pvp, pve, pc, gamer, naval, action, call, of, duty, warframe
+    total, war, helldivers, twitch, stream, streamers, content, creators, youtube, Holdfast, payday, foxhole, pc, steam, xbox, playstation">
+    <meta name="author" content="Overboard Design">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
 
-<link rel="icon" type="image/x-icon" href="raidfav.png">
-
-<meta name="description" content="Raid-Station Gaming Community">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="styles.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-font-family:'Audiowide', sans-serif;
-text-align:center;
-}
-
-.stream-section{
-margin-bottom:60px;
-}
-
-.stream-container{
-display:flex;
-justify-content:center;
-gap:20px;
-max-width:1200px;
-margin:auto;
-}
-
-.stream-container iframe{
-border:none;
-}
-
-.video{
-width:854px;
-height:480px;
-}
-
-.chat{
-width:350px;
-height:480px;
-}
-
-/* MOBILE */
-
-@media (max-width:1000px){
-
-.stream-container{
-flex-direction:column;
-align-items:center;
-}
-
-.video{
-width:100%;
-aspect-ratio:16/9;
-height:auto;
-}
-
-.chat{
-width:100%;
-height:400px;
-}
-
-}
-
-</style>
-
+    <!-- Google Font -->
+    
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    
 </head>
-
 <body>
 
+
+    <!-- Main Content -->
+
+    <div class="title">
+        <h1>Raid-Station Live Streams</h1>
+    </div>
+    
+  <!-- Twitch Embed JS API -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+<style>
+  
+  .content {
+    text-align: center; /* Optional: center titles if you want */
+    margin-bottom: 40px;
+  }
+
+  .content .twitch-player {
+    width: 854px;
+    height: 480px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .content .twitch-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+
+    .content .twitch-player iframe {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+</style>
+
+<!-- bruj_haha -->
 <div class="title">
-<h1>Raid-Station Live Streams</h1>
+  <h2>bruja_haha</h2>
+</div>
+<div class="content">
+  <div id="player-bruja_haha" class="twitch-player"></div>
 </div>
 
-<!-- STREAM -->
-
-<div class="stream-section">
-
-<h2>bruja_haha</h2>
-
-<div class="stream-container">
-
-<iframe
-class="video"
-src="https://player.twitch.tv/?channel=bruja_haha&parent=raid-station.netlify.app&muted=true"
-allowfullscreen>
-</iframe>
-
-<iframe
-class="chat"
-src="https://www.twitch.tv/embed/bruja_haha/chat?parent=raid-station.netlify.app">
-</iframe>
-
+<!-- vyntrikgaming -->
+<div class="title">
+  <h2>vyntrikgaming</h2>
 </div>
+<div class="content">
+  <div id="player-vyntrikgaming" class="twitch-player"></div>
 </div>
 
-
-<div class="stream-section">
-
-<h2>vyntrikgaming</h2>
-
-<div class="stream-container">
-
-<iframe
-class="video"
-src="https://player.twitch.tv/?channel=vyntrikgaming&parent=raid-station.netlify.app&muted=true"
-allowfullscreen>
-</iframe>
-
-<iframe
-class="chat"
-src="https://www.twitch.tv/embed/vyntrikgaming/chat?parent=raid-station.netlify.app">
-</iframe>
-
+<!-- Punished_echo -->
+<div class="title">
+  <h2>Punished_echo</h2>
 </div>
+<div class="content">
+  <div id="player-Punished_echo" 
+  class="twitch-player"></div>
+</div>
+
+<!-- Everbbbaby -->
+<div class="title">
+  <h2>Everbbbaby</h2>
+</div>
+<div class="content">
+  <div id="player-Everbbbaby" 
+  class="twitch-player"></div>
+</div>
+
+<!-- theharryballzack-->
+<div class="title">
+  <h2>theharryballzack</h2>
+</div>
+<div class="content">
+  <div id="player-theharryballzack" class="twitch-player"></div>
 </div>
 
 
-<div class="stream-section">
-
-<h2>Punished_echo</h2>
-
-<div class="stream-container">
-
-<iframe
-class="video"
-src="https://player.twitch.tv/?channel=Punished_echo&parent=raid-station.netlify.app&muted=true"
-allowfullscreen>
-</iframe>
-
-<iframe
-class="chat"
-src="https://www.twitch.tv/embed/Punished_echo/chat?parent=raid-station.netlify.app">
-</iframe>
-
-</div>
-</div>
+<!-- JavaScript to Load Players -->
+<script type="text/javascript">
+  const parentDomain = "raid-station.netlify.app";
 
 
-<div class="stream-section">
+  new Twitch.Player("player-bruja_haha", {
+    width: "100%",
+    height: "100%",
+    channel: "bruja_haha",
+    parent: [parentDomain],
+    muted: true
+  });
 
-<h2>Everbbbaby</h2>
+        new Twitch.Player("player-vyntrikgaming", {
+    width: "100%",
+    height: "100%",
+    channel: "vyntrikgaming",
+    parent: [parentDomain],
+    muted: true
+  });
 
-<div class="stream-container">
+  new Twitch.Player("player-Punished_echo", {
+    width: "100%",
+    height: "100%",
+    channel: "Punished_echo",
+    parent: [parentDomain],
+    muted: true
+  });
 
-<iframe
-class="video"
-src="https://player.twitch.tv/?channel=Everbbbaby&parent=raid-station.netlify.app&muted=true"
-allowfullscreen>
-</iframe>
+    new Twitch.Player("player-Everbbbaby", {
+    width: "100%",
+    height: "100%",
+    channel: "Everbbbaby",
+    parent: [parentDomain],
+    muted: true
+  });
 
-<iframe
-class="chat"
-src="https://www.twitch.tv/embed/Everbbbaby/chat?parent=raid-station.netlify.app">
-</iframe>
+   new Twitch.Player("player-theharryballzack", {
+    width: "100%",
+    height: "100%",
+    channel: "theharryballzack",
+    parent: [parentDomain],
+    muted: true
+  });
+    
+  
+   
 
-</div>
-</div>
-
-
-<div class="stream-section">
-
-<h2>theharryballzack</h2>
-
-<div class="stream-container">
-
-<iframe
-class="video"
-src="https://player.twitch.tv/?channel=theharryballzack&parent=raid-station.netlify.app&muted=true"
-allowfullscreen>
-</iframe>
-
-<iframe
-class="chat"
-src="https://www.twitch.tv/embed/theharryballzack/chat?parent=raid-station.netlify.app">
-</iframe>
-
-</div>
-</div>
+ 
+</script>
 
 
-<div class="menu-container">
-<a href="index.html" class="menu-item">
-<i class="fas fa-home"></i> Return to Homepage
+   <div class="menu-container">
+    <a href="index.html" class="menu-item">
+  <i class="fas fa-home"></i> Return to Homepage
 </a>
 </div>
 
+<div>
 <footer>
-By Overboard Design.
+       By Overboard Design.
 </footer>
-
+</div> 
 </body>
 </html>
