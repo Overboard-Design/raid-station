@@ -1,191 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>gallery</title>
-     <link rel="icon" type="image/x-icon" href="raidfav.png">
-    <meta name="description" content="Raid Station Gaming Community">
-    <meta name="keywords" content="raid, station, raidstation, raid-station, gaming, clan, guild, community, pvp, pve, pc, gamer, call, of, duty, warframe
-    total, war, helldivers, twitch, stream, streamers, content, creators, youtube, Holdfast, payday, pc, steam, xbox, playstation">
-    <meta name="author" content="Overboard Design">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
-    
-     crossorigin="anonymous"></script>
-    
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>Raid-Station Gallery</title>
 
-    <!-- Google Font -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-    </style>
-    </head>
+<link rel="icon" type="image/x-icon" href="raidfav.png">
+
+<meta name="description" content="Raid Station Gaming Community">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/325908507e.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* Lightbox */
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+}
+
+#lightbox.active{
+display:flex;
+}
+
+#lightbox span{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+</style>
+
+</head>
+
 <body>
-    <div class="title">
-     <h1>Raid-Station Gallery</h1>
-    </div>
 
-  <div class="gallery">
-    <a href="nms1.png" class="gallery-item"><img src="nms1.png" alt="nms1"></a>
-    <a href="dotd2.png" class="gallery-item"><img src="dotd2.png" alt="dotd2"></a>
-    <a href="dotd.png" class="gallery-item"><img src="dotd.png" alt="dotd"></a>
-    <a href="lbu.png" class="gallery-item"><img src="lbu.png" alt="lbu"></a>
-    <a href="7days3.png" class="gallery-item"><img src="7days3.png" alt="7days3"></a>
-    <a href="7days2.png" class="gallery-item"><img src="7days2.png" alt="7days2"></a>
-    <a href="7daybuh.png" class="gallery-item"><img src="7daybuh.png" alt="7daybuh"></a>
-    <a href="ace3.png" class="gallery-item"><img src="ace3.png" alt="ace3"></a>
-    <a href="ace2.png" class="gallery-item"><img src="ace2.png" alt="ace2"></a>
-    <a href="ace1.png" class="gallery-item"><img src="ace1.png" alt="ace1"></a>
-    <a href="machetefarms.png" class="gallery-item"><img src="machetefarms.png" alt="machetefarms"></a>
-    <a href="sot2.png" class="gallery-item"><img src="sot2.png" alt="sot2"></a>
-    <a href="sot1.png" class="gallery-item"><img src="sot1.png" alt="sot1"></a>
-    <a href="sot rs.png" class="gallery-item"><img src="sot rs.png" alt="sotrs"></a>
-    <a href="warhammer1.jpg" class="gallery-item"><img src="warhammer1.jpg" alt="warhammer1"></a>
-    <a href="empire1.png" class="gallery-item"><img src="empire1.png" alt="empire1"></a>
-    <a href="raid.png" class="gallery-item"><img src="raid.png" alt="raid-station"></a>
-    <a href="Dollhouse playtest.png" class="gallery-item"><img src="Dollhouse playtest.png" alt="dollhouse"></a>
-    <a href="7daysworm.png" class="gallery-item"><img src="7daysworm.png" alt="worm"></a>
-    <a href="raid-station.com2.gif" class="gallery-item"><img src="raid-station.com2.gif" alt="gif2"loading="lazy"></a>
-    <a href="holdfast1.png" class="gallery-item"><img src="holdfast1.png" alt="raid-station"loading="lazy"></a>
-    <a href="Raid-Station.com1.gif" class="gallery-item"><img src="Raid-Station.com1.gif" alt="gif1" loading="lazy"></a>
-    <a href="raid-station.com3.gif" class="gallery-item"><img src="raid-station.com3.gif" alt="gif3" loading="lazy"></a>
-    <a href="napoleon1.JPG" class="gallery-item"><img src="napoleon1.JPG" alt="napoleon1"loading="lazy"></a>
-    <a href="RAID-STATION Card.png" class="gallery-item"><img src="RAID-STATION Card.png" alt="Card" loading="lazy"></a>
-    <a href="empire2.png" class="gallery-item"><img src="empire2.png" alt="empire2" loading="lazy"></a> 
-      </div>
-  <div id="nms1" class="lightbox">
-    <a href="nms1.png" class="close">&times;</a>
-    <img src="nms1.png" alt="nms1 Large">
-  </div>      
-   <div id="dotd2" class="lightbox">
-    <a href="dotd2.png" class="close">&times;</a>
-    <img src="dotd2.png" alt="dotd2 Large">
-  </div>      
-  <div id="dotd" class="lightbox">
-    <a href="dotd.png" class="close">&times;</a>
-    <img src="dotd.png" alt="dotd Large">
-  </div>     
-  <div id="lbu" class="lightbox">
-    <a href="lbu.png" class="close">&times;</a>
-    <img src="lbu.png" alt="lbu Large">
-  </div>     
-  <div id="7days3" class="lightbox">
-    <a href="7days3.png" class="close">&times;</a>
-    <img src="7days3.png" alt="7days3 Large">
-  </div> 
-  <div id="7days2" class="lightbox">
-    <a href="7days2.png" class="close">&times;</a>
-    <img src="7days2.png" alt="7days2 Large">
-  </div> 
-   <div id="7daybuh" class="lightbox">
-    <a href="7daybuh.png" class="close">&times;</a>
-    <img src="7daybuh.png" alt="7daybuh Large">
-  </div> 
-   </div>
-   <div id="ace3" class="lightbox">
-    <a href="ace3.png" class="close">&times;</a>
-    <img src="ace3.png" alt="ace3 Large">
-  </div> 
-   <div id="ace2" class="lightbox">
-    <a href="ace2.png" class="close">&times;</a>
-    <img src="ace2.png" alt="ace2 Large">
-  </div>  
-  <div id="ace1" class="lightbox">
-    <a href="ace1.png" class="close">&times;</a>
-    <img src="ace1.png" alt="ace1 Large">
-  </div>  
-   <div id="machetefarms" class="lightbox">
-    <a href="machetefarms.png" class="close">&times;</a>
-    <img src="machetefarms.png" alt="machetefarms Large">
-  </div>  
-   <div id="sot2.png" class="lightbox">
-    <a href="sot2.png" class="close">&times;</a>
-    <img src="sot2.png" alt="sot2 Large">
-  </div>  
-  </div>
-   <div id="sot1.png" class="lightbox">
-    <a href="sot1.png" class="close">&times;</a>
-    <img src="sot1.png" alt="sot1 Large">
-  </div>  
-  </div>
-   <div id="sotrs" class="lightbox">
-    <a href="sot rs.png" class="close">&times;</a>
-    <img src="sot rs.png" alt="sotrs Large">
-  </div>  
- </div>
-   <div id="warhammer1" class="lightbox">
-    <a href="warhammer1.jpg" class="close">&times;</a>
-    <img src="warhammer1.jpg" alt="warhammer1 Large">
-  </div>   
+<div class="title">
+<h1>Raid-Station Gallery</h1>
 </div>
-   <div id="empire1" class="lightbox">
-    <a href="empire1.png" class="close">&times;</a>
-    <img src="empire1.png" alt="empire1 Large">
-  </div>
-  </div>
-   <div id="raidlogo" class="lightbox">
-    <a href="raid.png" class="close">&times;</a>
-    <img src="raid.png" alt="raid logo Large">
-  </div>
-  <div id="bella" class="lightbox">
-    <a href="bella luce.png" class="close">&times;</a>
-    <img src="bella luce.png" alt="bella Large">
-  </div>
-  <div id="Dollhouse" class="lightbox">
-    <a href="Dollhouse playtest.png" class="close">&times;</a>
-    <img src="Dollhouse playtest.png" alt="Dollhouse Large">
-  </div>
-  <div id="7daysworm" class="lightbox">
-    <a href="7daysworm.png" class="close">&times;</a>
-    <img src="7daysworm.png" alt="7daysworm Large">
-  </div>
-  <div id="nelson" class="lightbox">
-    <a href="nelson.jpg" class="close">&times;</a>
-    <img src="nelson.jpg" alt="nelson Large">
-  </div>
-  <div id="gif2" class="lightbox">
-    <a href="raid-station.com2.gif" class="close">&times;</a>
-    <img src="raid-station.com2.gif" alt="gif2 Large">
-  </div>
-  </div>
-   <div id="holdfast1" class="lightbox">
-    <a href="holdfast1.png" class="close">&times;</a>
-    <img src="holdfast1.png" alt="holdfast1 Large">
-  </div>
-  <div id="gif1" class="lightbox">
-    <a href="Raid-Station.com1.gif" class="close">&times;</a>
-    <img src="Raid-Station.com1.gif" alt="gif1 Large">
-  </div>
-  <div id="gif3" class="lightbox">
-    <a href="raid-station.com3.gif" class="close">&times;</a>
-    <img src="raid-station.com3.gif" alt="gif3 Large">
-  </div>
-  <div id="gif3" class="lightbox">
-    <a href="napoleon1.JPG" class="close">&times;</a>
-    <img src="napoleon1.JPG" alt="napoleon1 Large">
-  </div>
-  <div id="Card" class="lightbox">
-    <a href="RAID-STATION Card.png" class="close">&times;</a>
-    <img src="RAID-STATION Card.png" alt="Card Large">
-  </div>
-  <div id="Card" class="lightbox">
-    <a href="empire2.png" class="close">&times;</a>
-    <img src="empire2.png" alt="empire2 Large"> 
-  </div>
-  
-  
-  <div class="menu-container">
-    <a href="index.html" class="menu-item">
-  <i class="fas fa-home"></i> Return to Homepage
+
+<div class="gallery">
+
+<a href="#nms1" class="gallery-item"><img src="nms1.png" alt="nms1" loading="lazy"></a>
+<a href="#dotd2" class="gallery-item"><img src="dotd2.png" alt="dotd2" loading="lazy"></a>
+<a href="#dotd" class="gallery-item"><img src="dotd.png" alt="dotd" loading="lazy"></a>
+<a href="#lbu" class="gallery-item"><img src="lbu.png" alt="lbu" loading="lazy"></a>
+<a href="#7days3" class="gallery-item"><img src="7days3.png" alt="7days3" loading="lazy"></a>
+<a href="#7days2" class="gallery-item"><img src="7days2.png" alt="7days2" loading="lazy"></a>
+<a href="#7daybuh" class="gallery-item"><img src="7daybuh.png" alt="7daybuh" loading="lazy"></a>
+<a href="#ace3" class="gallery-item"><img src="ace3.png" alt="ace3" loading="lazy"></a>
+<a href="#ace2" class="gallery-item"><img src="ace2.png" alt="ace2" loading="lazy"></a>
+<a href="#ace1" class="gallery-item"><img src="ace1.png" alt="ace1" loading="lazy"></a>
+<a href="#machetefarms" class="gallery-item"><img src="machetefarms.png" alt="machetefarms" loading="lazy"></a>
+<a href="#sot2" class="gallery-item"><img src="sot2.png" alt="sot2" loading="lazy"></a>
+<a href="#sot1" class="gallery-item"><img src="sot1.png" alt="sot1" loading="lazy"></a>
+<a href="#sotrs" class="gallery-item"><img src="sot rs.png" alt="sotrs" loading="lazy"></a>
+<a href="#warhammer1" class="gallery-item"><img src="warhammer1.jpg" alt="warhammer1" loading="lazy"></a>
+<a href="#empire1" class="gallery-item"><img src="empire1.png" alt="empire1" loading="lazy"></a>
+<a href="#raidlogo" class="gallery-item"><img src="raid.png" alt="raid-station" loading="lazy"></a>
+<a href="#Dollhouse" class="gallery-item"><img src="Dollhouse playtest.png" alt="dollhouse" loading="lazy"></a>
+<a href="#7daysworm" class="gallery-item"><img src="7daysworm.png" alt="worm" loading="lazy"></a>
+<a href="#gif2" class="gallery-item"><img src="raid-station.com2.gif" alt="gif2" loading="lazy"></a>
+<a href="#holdfast1" class="gallery-item"><img src="holdfast1.png" alt="holdfast" loading="lazy"></a>
+<a href="#gif1" class="gallery-item"><img src="Raid-Station.com1.gif" alt="gif1" loading="lazy"></a>
+<a href="#gif3" class="gallery-item"><img src="raid-station.com3.gif" alt="gif3" loading="lazy"></a>
+<a href="#napoleon1" class="gallery-item"><img src="napoleon1.JPG" alt="napoleon1" loading="lazy"></a>
+<a href="#card" class="gallery-item"><img src="RAID-STATION Card.png" alt="Card" loading="lazy"></a>
+<a href="#empire2" class="gallery-item"><img src="empire2.png" alt="empire2" loading="lazy"></a>
+
+</div>
+<!-- LIGHTBOX -->
+<div id="lightbox">
+<span>&times;</span>
+<img src="">
+</div>
+
+<div class="menu-container">
+<a href="index.html" class="menu-item">
+<i class="fas fa-home"></i> Return to Homepage
 </a>
 </div>
 
 <footer>
-       By Overboard Design.
+By Overboard Design.
 </footer>
 
-</head>
+<script>
+
+const lightbox = document.getElementById('lightbox')
+const lightboxImg = lightbox.querySelector('img')
+
+document.querySelectorAll('.gallery a').forEach(link=>{
+link.addEventListener('click', e=>{
+e.preventDefault()
+lightbox.classList.add('active')
+lightboxImg.src = link.href
+})
+})
+
+lightbox.addEventListener('click', ()=>{
+lightbox.classList.remove('active')
+})
+
+</script>
+
+</body>
 </html>
