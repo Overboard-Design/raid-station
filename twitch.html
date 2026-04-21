@@ -92,6 +92,23 @@
   class="twitch-player"></div>
 </div>
 
+<!-- ItsByrinn -->
+<div class="title">
+  <h2>ItsByrinn</h2>
+</div>
+<div class="content">
+  <div id="player-ItsByrinn" 
+  class="twitch-player"></div>
+</div>
+
+<!-- Nockon95-->
+<div class="title">
+  <h2>Nockon95</h2>
+</div>
+<div class="content">
+  <div id="player-Nockon95" class="twitch-player"></div>
+</div>
+
 <!-- Everbbbaby -->
 <div class="title">
   <h2>Everbbbaby</h2>
@@ -108,6 +125,7 @@
 <div class="content">
   <div id="player-theharryballzack" class="twitch-player"></div>
 </div>
+
 
 
 <!-- JavaScript to Load Players -->
@@ -135,6 +153,22 @@
     width: "100%",
     height: "100%",
     channel: "Punished_echo",
+    parent: [parentDomain],
+    muted: true
+  });
+
+   new Twitch.Player("player-ItsByrinn", {
+    width: "100%",
+    height: "100%",
+    channel: "ItsByrinn",
+    parent: [parentDomain],
+    muted: true
+  });
+   
+  new Twitch.Player("player-Nockon95", {
+    width: "100%",
+    height: "100%",
+    channel: "Nockon95",
     parent: [parentDomain],
     muted: true
   });
