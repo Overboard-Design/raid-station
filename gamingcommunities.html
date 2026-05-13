@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NicheGaming - Communities & Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--main-color:#39ff14;}
+body{margin:0;background:#030303;color:var(--main-color);font-family:"Orbitron", system-ui, sans-serif;text-align:center;padding:20px;scroll-behavior:smooth;}
+h1{font-size:2.5rem;text-shadow:0 0 5px var(--main-color),0 0 10px var(--main-color),0 0 20px var(--main-color),0 0 40px var(--main-color);margin-bottom:20px;}
+
+/* RETURN HOME BUTTON */
+#return-home {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background:#000;
+  color:var(--main-color);
+  border:2px solid var(--main-color);
+  border-radius:5px;
+  text-decoration:none;
+  font-weight:600;
+  z-index:1000;
+  transition:0.3s;
+}
+#return-home:hover {
+  background:var(--main-color);
+  color:#000;
+}
+
+/* BACK TO TOP */
+#back-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background:#000;
+  color:var(--main-color);
+  border:2px solid var(--main-color);
+  border-radius:5px;
+  text-decoration:none;
+  font-weight:600;
+  z-index:1000;
+  transition:0.3s;
+}
+#back-top:hover {
+  background:var(--main-color);
+  color:#000;
+}
+
+/* SEARCH BAR */
+#search-bar {
+  max-width:600px;
+  margin:0 auto 30px auto;
+  display:flex;
+  justify-content:center;
+}
+#search-input {
+  width:100%;
+  padding:12px 20px;
+  border-radius:5px;
+  border:2px solid var(--main-color);
+  background:#000;
+  color:var(--main-color);
+  font-family:"Orbitron", monospace;
+  font-size:1rem;
+}
+
+/* LIST SECTION */
+#link-list{display:flex;flex-direction:column;gap:30px;max-width:1000px;margin:0 auto;}
+.link-card{display:flex;align-items:center;justify-content:flex-start;background:#000;border:2px solid var(--main-color);padding:20px;border-radius:6px;box-shadow:0 0 15px var(--main-color),0 0 30px var(--main-color);transition:transform 0.3s;}
+.link-card:hover{transform:scale(1.02);}
+.link-pic img{width:100px;height:100px;border-radius:10px;object-fit:cover;margin-right:20px;}
+.link-content{flex:1;text-align:left;}
+.link-title{font-size:1.6rem;font-weight:800;margin-bottom:10px;}
+.link-desc{font-size:1rem;line-height:1.4; color:var(--main-color);}
+.link-actions{display:flex;flex-direction:column;gap:10px;margin-left:20px;}
+.link-actions a{color:#000;background:var(--main-color);padding:10px 15px;border-radius:4px;text-decoration:none;font-weight:600;transition:background 0.3s,color 0.3s;text-align:center;}
+.link-actions a:hover{background:#000;color:var(--main-color);border:2px solid var(--main-color);}
+
+/* CRT EFFECT */
+.crt-screen{position:relative;min-height:100vh;overflow:hidden;}
+.crt-screen::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 2px, transparent 4px);pointer-events:none;z-index:999;}
+.crt-screen::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);pointer-events:none;}
+/* ========================= */
+/* FINAL UNIVERSAL HOVER FIX */
+/* ========================= */
+
+button:hover,
+a:hover,
+#return-home:hover,
+#back-top:hover,
+.spotlight-btn:hover,
+.menu-item:hover,
+#filter-bar select:hover,
+.filter-group button:hover {
+
+  /* 🔴 kill all green fill everywhere */
+  background: #000 !important;
+
+  /* 🔴 force neon text */
+  color: var(--main-color) !important;
+
+  /* 🔥 strong glow */
+  text-shadow:
+    0 0 5px var(--main-color),
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color),
+    0 0 80px var(--main-color) !important;
+
+  /* optional but nice */
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color);
+}
+/* ========================= */
+/* AFFILIATE GLOBAL */
+/* ========================= */
+
+.inactive{
+  display:none; /* 🔴 keeps ads hidden until ready */
+}
+
+/* ========================= */
+/* SIDE BANNERS */
+/* ========================= */
+
+.affiliate-sidebar{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:180px;
+  z-index:999;
+}
+
+.affiliate-sidebar.left{ left:10px; }
+.affiliate-sidebar.right{ right:10px; }
+
+.affiliate-stack{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* each square */
+.affiliate-item{
+  background:#000;
+  border:2px solid var(--main-color);
+  box-shadow:0 0 10px var(--main-color);
+  padding:5px;
+}
+.affiliate-item{
+  transition:0.3s;
+}
+
+.affiliate-item:hover{
+  transform:scale(1.20);
+  z-index:1000;
+
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color),
+    0 0 80px var(--main-color);
+}
+/* square images */
+.affiliate-item img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+body{
+  padding-bottom:110px; /* adjust if needed */
+}
+
+/* DISCLAIMER */
+.affiliate-disclaimer{
+  max-width:1000px;
+  margin:40px auto 80px;
+  font-size:0.85rem;
+  opacity:0.7;
+  line-height:1.5;
+}
+@media(max-width:1200px){
+  .affiliate-sidebar{
+    display:none;
+  }
+}
+.affiliate-item:hover{
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color);
+}
+/* =========================
+   DISABLE SYSTEM CURSOR
+========================= */
+
+html, body {
+  cursor: none !important;
+}
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* =========================
+   CRT CURSOR CORE
+========================= */
+
+#crt-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+
+  background: var(--main-color);
+
+  box-shadow:
+    0 0 6px var(--main-color),
+    0 0 12px var(--main-color),
+    0 0 24px var(--main-color);
+}
+
+
+/* outer pulse ring */
+#crt-cursor::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: ringPulse 1.2s ease-in-out infinite;
+}
+
+/* =========================
+   CURSOR PULSE (core glow breathing)
+========================= */
+
+@keyframes cursorPulse {
+  0% {
+    box-shadow:
+      0 0 4px var(--main-color),
+      0 0 10px var(--main-color),
+      0 0 20px var(--main-color);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 8px var(--main-color),
+      0 0 18px var(--main-color),
+      0 0 40px var(--main-color);
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+  100% {
+    box-shadow:
+      0 0 4px var(--main-color),
+      0 0 10px var(--main-color),
+      0 0 20px var(--main-color);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* =========================
+   OUTER SCAN RING
+========================= */
+
+@keyframes ringPulse {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+#crt-ripple{
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body class="crt-screen">
+<div id="crt-cursor"></div>
+<div id="crt-ripple"></div>
+<h1>Communities & Links</h1>
+<a href="index.html" id="return-home">Return Home</a>
+
+<!-- Search bar -->
+<div id="search-bar">
+  <input type="text" id="search-input" placeholder="Search communities...">
+</div>
+
+<div id="link-list">
+
+  <!-- Raid Station -->
+  <div class="link-card">
+    <div class="link-pic">
+      <img src="raid-station gif2.gif" alt="Discord Logo">
+    </div>
+    <div class="link-content">
+      <div class="link-title">Raid Station</div>
+      <div class="link-desc">Join our Discord to connect with gamers and content creators, participate in playtests, gain access to copyright free music. 
+        What we play: Openworld Survival Craft, MMO's, FPS, Party Games, extraction shooters and Strategy Games.  </div>
+    </div>
+    <div class="link-actions">
+      <a href="https://discord.gg/T7sK3TPcQH" target="_blank">Discord</a>
+      <a href="https://www.raid-station.com/" target="_blank">Website</a>
+    </div>
+  </div>
+
+  <!-- Example Card 2 -->
+  <div class="link-card">
+    <div class="link-pic">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Logo">
+    </div>
+    <div class="link-content">
+      <div class="link-title">Your Community Here</div>
+      <div class="link-desc">How to Apply Join Raid Station and Contact Jonah Overboard invite him to your discord, Create a text channel called https://nichegaming.co.uk
+         post a link inside the text channel alternatively Contact nichegaminguk@gmail.com.</div>
+    </div>
+    <div class="link-actions">
+      <a href="https://discord.gg/progamershub" target="_blank">Discord</a>
+    </div>
+  </div>
+
+<!-- ========================= -->
+<!-- AFFILIATE SIDE LEFT -->
+<!-- ========================= -->
+<div class="affiliate-sidebar left ">
+
+  <div class="affiliate-stack">
+
+    <!-- 3 square slots -->
+   <a href="https://www.g2a.com/n/7d2d" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="7d2d AL.png" alt="Affiliate Ad">
+</a>
+
+   <a href="https://www.g2a.com/n/wh40kdark" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="wh40kdark AL.png" alt="Affiliate Ad">
+  </a>
+
+
+   <a href="https://www.g2a.com/n/rockstargta5" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="gta5 AL.png" alt="Affiliate Ad">
+</a>
+
+  </div> 
+</div>
+
+
+<!-- ========================= -->
+<!-- AFFILIATE SIDE RIGHT -->
+<!-- ========================= -->
+<div class="affiliate-sidebar right inactive">
+  <div class="affiliate-stack">
+
+    <a href="YOUR_AFFILIATE_LINK" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="DDR4 AL.png" alt="Affiliate Ad">
+</a>
+    <a href="YOUR_AFFILIATE_LINK" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="Turtle Beach Recon 50 AL.png" alt="Affiliate Ad">
+  
+  <a href="YOUR_AFFILIATE_LINK" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="R36SL AL.png" alt="Affiliate Ad">
+</a>
+ 
+
+  </div>
+</div>
+
+
+</div>
+
+<!-- Back to Top Arrow -->
+<a href="#" id="back-top">Back to Top</a>
+
+<script>
+// Apply saved color from index.html
+const savedColor = localStorage.getItem("nicheColor") || "#39ff14";
+document.documentElement.style.setProperty("--main-color", savedColor);
+
+// Update dynamic color elements
+document.querySelectorAll(".link-card").forEach(card=>{
+  card.style.borderColor = savedColor;
+  card.style.boxShadow = `0 0 15px ${savedColor},0 0 30px ${savedColor}`;
+});
+document.querySelectorAll(".link-actions a").forEach(a=>{
+  a.style.background = savedColor;
+  a.style.color = "#000";
+  a.onmouseover = ()=>{a.style.background="#000"; a.style.color=savedColor; a.style.border=`2px solid ${savedColor}`};
+  a.onmouseout = ()=>{a.style.background=savedColor; a.style.color="#000"; a.style.border="none";};
+});
+document.getElementById("return-home").style.color = savedColor;
+document.getElementById("return-home").style.borderColor = savedColor;
+document.getElementById("return-home").onmouseover = ()=>{document.getElementById("return-home").style.background=savedColor; document.getElementById("return-home").style.color="#000";};
+document.getElementById("return-home").onmouseout = ()=>{document.getElementById("return-home").style.background="#000"; document.getElementById("return-home").style.color=savedColor;};
+
+// Back to top
+document.getElementById("back-top").onclick = (e)=>{
+  e.preventDefault(); // prevent jump
+  window.scrollTo({top:0, behavior:"smooth"});
+};
+document.getElementById("back-top").style.borderColor = savedColor;
+document.getElementById("back-top").style.color = savedColor;
+document.getElementById("back-top").onmouseover = ()=>{document.getElementById("back-top").style.background=savedColor; document.getElementById("back-top").style.color="#000";};
+document.getElementById("back-top").onmouseout = ()=>{document.getElementById("back-top").style.background="#000"; document.getElementById("back-top").style.color=savedColor;};
+
+// Search filter
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", ()=>{
+  const term = searchInput.value.toLowerCase();
+  document.querySelectorAll(".link-card").forEach(card=>{
+    const title = card.querySelector(".link-title").textContent.toLowerCase();
+    const desc = card.querySelector(".link-desc").textContent.toLowerCase();
+    card.style.display = (title.includes(term) || desc.includes(term)) ? "flex" : "none";
+  });
+});
+window.addEventListener("DOMContentLoaded", () => {
+
+  const cursor = document.getElementById("crt-cursor");
+  if (!cursor) return;
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  let x = 0;
+  let y = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    x += (mouseX - x) * 0.18;
+    y += (mouseY - y) * 0.18;
+
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
+</script>
+<!-- DISCLAIMER -->
+<div class="affiliate-disclaimer">
+Affiliate Disclaimer: Some links on this page may be affiliate links. We may earn a small commission at no extra cost to you.
+</div>
+</body>
+</html>

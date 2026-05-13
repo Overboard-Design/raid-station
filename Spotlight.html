@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NicheGaming - Spotlight</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root { --main-color:#39ff14; }
+
+body{
+  margin:0;
+  background:#030303;
+  color:var(--main-color);
+  font-family:"Orbitron", sans-serif;
+  text-align:center;
+  padding:20px;
+}
+
+/* TITLE */
+h1{
+  font-size:2.5rem;
+  text-shadow:0 0 10px var(--main-color),0 0 30px var(--main-color);
+}
+
+/* BUTTONS */
+#return-home, #back-top{
+  position:fixed;
+  padding:12px 20px;
+  background:#000;
+  color:var(--main-color);
+  border:2px solid var(--main-color);
+  text-decoration:none;
+  font-weight:600;
+  z-index:1000;
+}
+
+#return-home{top:20px; right:20px;}
+
+#back-top{
+  bottom:20px;
+  right:20px;
+  left:auto;
+  transform:none;
+}
+
+/* LIST */
+#spotlight-list{
+  max-width:1000px;
+  margin:40px auto;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+/* CARD */
+.spotlight-card{
+  border:2px solid var(--main-color);
+  background:#000;
+  border-radius:6px;
+  overflow:hidden;
+  cursor:pointer;
+
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--main-color) 25%, transparent),
+    0 0 18px color-mix(in srgb, var(--main-color) 15%, transparent);
+
+  transition:0.3s ease;
+}
+
+.spotlight-card:hover{
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--main-color) 60%, transparent),
+    0 0 25px color-mix(in srgb, var(--main-color) 50%, transparent),
+    0 0 45px color-mix(in srgb, var(--main-color) 35%, transparent);
+}
+
+.spotlight-card.active{
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--main-color) 70%, transparent),
+    0 0 30px color-mix(in srgb, var(--main-color) 60%, transparent),
+    0 0 60px color-mix(in srgb, var(--main-color) 35%, transparent);
+}
+
+/* HEADER */
+.spotlight-header{
+  display:flex;
+  align-items:center;
+  padding:20px;
+}
+
+.spotlight-header img{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-right:20px;
+}
+
+.spotlight-title{
+  font-size:1.8rem;
+  font-weight:800;
+}
+
+/* EXPAND */
+.spotlight-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease;
+  padding:0 20px;
+  text-align:left;
+}
+
+.spotlight-card.active .spotlight-content{
+  max-height:1200px;
+  padding:20px;
+}
+
+/* MEDIA */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.gallery img,
+.gallery .video{
+  width:100%;
+  height:100px;
+  object-fit:cover;
+  border-radius:6px;
+  cursor:pointer;
+  border:2px solid var(--main-color);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.9rem;
+  font-weight:600;
+}
+
+.media iframe{
+  width:100%;
+  height:400px;
+  border:none;
+  border-radius:8px;
+}
+
+/* TEXT */
+.desc{
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.rating{
+  font-weight:800;
+  font-size:1.2rem;
+}
+
+/* CRT */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events:none;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+#lightbox.active{
+  display:flex;
+}
+
+.lightbox-content{
+  position:relative;
+  width:90vw;
+  height:80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* shared media sizing */
+.lightbox-content img,
+.lightbox-content iframe{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border:2px solid var(--main-color);
+  border-radius:8px;
+}
+.lightbox-content iframe{
+  width:90%;
+  height:90%;
+  aspect-ratio:16/9;
+}
+#lightbox .close-btn{
+  position:absolute;
+  top:15px;
+  left:15px;
+  font-size:2rem;
+  color:var(--main-color);
+  cursor:pointer;
+  font-weight:800;
+  text-shadow:0 0 10px var(--main-color);
+  z-index:3000;
+}
+
+/* ACTIONS */
+.spotlight-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:20px;
+  gap:10px;
+}
+
+.steam-btn{
+  background:var(--main-color);
+  color:#000;
+  padding:10px 16px;
+  border-radius:4px;
+  text-decoration:none;
+  font-weight:600;
+  border:2px solid var(--main-color);
+}
+
+.steam-btn:hover{
+  background:#000;
+  color:var(--main-color);
+  box-shadow:0 0 10px var(--main-color),0 0 20px var(--main-color);
+}
+
+/* REMOVE ZOOM EFFECT (IMPORTANT FIX) */
+/* intentionally removed hover scale */
+
+/* DISCLAIMER */
+.affiliate-disclaimer{
+  max-width:1000px;
+  margin:40px auto 80px;
+  font-size:0.85rem;
+  opacity:0.7;
+  line-height:1.5;
+}
+/* ========================= */
+/* FINAL UNIVERSAL HOVER FIX */
+/* ========================= */
+
+button:hover,
+a:hover,
+#return-home:hover,
+#back-top:hover,
+.spotlight-btn:hover,
+.menu-item:hover,
+#filter-bar select:hover,
+.filter-group button:hover {
+
+  /* 🔴 kill all green fill everywhere */
+  background: #000 !important;
+
+  /* 🔴 force neon text */
+  color: var(--main-color) !important;
+
+  /* 🔥 strong glow */
+  text-shadow:
+    0 0 5px var(--main-color),
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color),
+    0 0 80px var(--main-color) !important;
+
+  /* optional but nice */
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color);
+}
+/* ========================= */
+/* AFFILIATE GLOBAL */
+/* ========================= */
+
+.inactive{
+  display:none; /* 🔴 keeps ads hidden until ready */
+}
+/* ========================= */
+/* SIDE BANNERS */
+/* ========================= */
+
+.affiliate-sidebar{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:180px;
+  z-index:999;
+}
+
+.affiliate-sidebar.left{ left:10px; }
+.affiliate-sidebar.right{ right:10px; }
+
+.affiliate-stack{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* each square */
+.affiliate-item{
+  background:#000;
+  border:2px solid var(--main-color);
+  box-shadow:0 0 10px var(--main-color);
+  padding:5px;
+}
+.affiliate-item{
+  transition:0.3s;
+}
+
+.affiliate-item:hover{
+  transform:scale(1.20);
+  z-index:1000;
+
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color),
+    0 0 80px var(--main-color);
+}
+/* square images */
+.affiliate-item img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+body{
+  padding-bottom:110px; /* adjust if needed */
+}
+
+.affiliate-disclaimer{
+  max-width:1000px;
+  margin:80px auto 20px;
+  font-size:0.85rem;
+  opacity:0.7;
+  line-height:1.5;
+  text-align:center;
+}
+@media(max-width:1200px){
+  .affiliate-sidebar{
+    display:none;
+  }
+}
+.affiliate-item:hover{
+  box-shadow:
+    0 0 10px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color);
+}
+/* =========================
+   DISABLE SYSTEM CURSOR
+========================= */
+
+html, body {
+  cursor: none !important;
+}
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* =========================
+   CRT CURSOR CORE
+========================= */
+
+#crt-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+
+  background: var(--main-color);
+
+  box-shadow:
+    0 0 6px var(--main-color),
+    0 0 12px var(--main-color),
+    0 0 24px var(--main-color);
+}
+
+
+/* outer pulse ring */
+#crt-cursor::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: ringPulse 1.2s ease-in-out infinite;
+}
+
+/* =========================
+   CURSOR PULSE (core glow breathing)
+========================= */
+
+@keyframes cursorPulse {
+  0% {
+    box-shadow:
+      0 0 4px var(--main-color),
+      0 0 10px var(--main-color),
+      0 0 20px var(--main-color);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 8px var(--main-color),
+      0 0 18px var(--main-color),
+      0 0 40px var(--main-color);
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+  100% {
+    box-shadow:
+      0 0 4px var(--main-color),
+      0 0 10px var(--main-color),
+      0 0 20px var(--main-color);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* =========================
+   OUTER SCAN RING
+========================= */
+
+@keyframes ringPulse {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+#crt-ripple{
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+
+<body>
+<div id="crt-cursor"></div>
+<div id="crt-ripple"></div>
+<h1>Spotlights</h1>
+<a href="index.html" id="return-home">Return Home</a>
+
+<div id="spotlight-list">
+
+<!-- ENGINEFALL -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="enginefall.jpg">
+    <div class="spotlight-title">Enginefall (Upcoming)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="Enginefall (1).jpg">
+      <img src="Enginefall(2).jpg">
+      <img src="Enginefall(3).jpg">
+      <div class="gallery-item video" data-video="https://www.youtube.com/embed/viBCVB1qwHw?si=lmcWzI69g-VUJpoZ">▶ Video</div>
+    </div>
+
+     <div class="desc">Enginefall is a new type of crafting multiplayer shooter. Board a colossal megatrain with your 
+      crew at the back, scavenge and build compact makeshift bases, push forward for better gear, then retreat to your Dagger 
+      shuttle to grow stronger and climb the train classes. Enginefall takes place entirely on colossal moving trains. 
+      From cramped tail slums to lavish first-class cars and guarded engine rooms, every carriage is a living space to loot, 
+      fight over, turn into a base, or eventually claim as part of your own rolling home as you climb from tailie to conductor.
+      Enginefall is built around human opponents and allies. Raid trains with friends, defend your makeshift bases, and clash with
+      other players over key routes and resources, with every encounter having the potential to flip from cooperation to conflict in a heartbeat.
+   </div>
+   <div class="desc">
+      Is this a game or a Social Experiment? I expect this game will be perfect for Competative Clans and Communitys, clearly inspired by Snowpiercer but with
+      a gritty cyberpunk aesthetic almost Necromunda in style, they do have the odd playtest give it a wishlist and check out there discord.
+    </div>
+    <div class="rating">Rating: TBD</div>
+
+    <div class="spotlight-actions">
+      <a class="steam-btn" href="https://store.steampowered.com/app/2437390/Enginefall/" target="_blank">View on Steam</a>
+    </div>
+  </div>
+</div>
+
+<!-- FMF2 -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="fmf2.jpg">
+    <div class="spotlight-title">Forgive Me Father 2  (Recommended Game)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="fmf2 (1).jpg">
+      <img src="fmf2(2).avif">
+      <img src="fmf2(3).jpg">
+      <div class="gallery-item video" data-video="https://www.youtube.com/embed/cOD2ObevyxU?si=KvogHoEbU1zthZrv">▶ Video</div>
+    </div>
+
+    <div class="desc">Journey once again into a malevolent world inspired by H.P Lovecraft’s myths where madness awaits on every corner. 
+      Embark on a path to salvation as you continue the story of the Priest character from the first installment. How long can you balance 
+      on the edge of sanity? Will your sins be forgiven, or your soul consumed by madness?
+   </div>
+    <div class="desc">
+      The Forgive me father games are what you'd expect from a classic fps, what makes them really special is the comic book art style and themes both
+      games are well worth playing for that alone.
+    </div>
+    <div class="rating">Rating: ★★★★★</div>
+
+     <div class="spotlight-actions">
+  <a href=https://store.steampowered.com/app/2272250/Forgive_Me_Father_2/ target="_blank" class="steam-btn">
+    View on Steam £20.99
+  </a>
+</div>
+<div class="spotlight-actions">
+  <a href=https://www.g2a.com/n/forgive2 target="_blank" class="steam-btn">
+    View on G2A £8.36
+  </a>
+</div>
+</div>
+</div>
+
+<!-- CHRONICLES -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="chroniclesmedieval.avif">
+    <div class="spotlight-title">Chronicles Medieval (Upcoming)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="chronicles1.jpg">
+      <img src="chronicles2.jpg">
+      <img src="chronicles 3.jpg">
+      <div class="gallery-item video" data-video="https://www.youtube.com/embed/dnDodo_kq1E?si=duN78DpPd0mEk3oW">▶ Video</div>
+    </div>
+
+   <div class="desc">Chronicles: Medieval throws you into a sprawling, dynamic sandbox in a brutal and beautiful European medieval world. 
+      Begin at the bottom, armed with nothing but grit and will. Earn your name in skirmishes, field battles, and sieges where every fight 
+      is a step towards more power. Build your castles, then hold them against those who would tear them down. Dominate the battlefield with 
+      ruthless melee actions, gear up, and adapt your tactics to crush anything the fight throws at you. Shape your destiny in a living, breathing
+      realm where every decision echoes through history and every sword swing could change your fate.
+   </div>
+    <div class="desc">
+      The Upcoming Highly Ambitious Medieval Sandbox focused on Historical Accuracy, it looks to be a split between top down and third person if your familiar with
+      the Mount and Blade series you'll know what to expect.
+    </div>
+    <div class="rating">Rating: TBD</div>
+
+    <div class="spotlight-actions">
+      <a class="steam-btn" href="https://store.steampowered.com/app/2231020/Chronicles_Medieval/" target="_blank">Steam</a>
+    </div>
+  </div>
+</div>
+
+<!-- HUNGER -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="hunger.jpg">
+    <div class="spotlight-title">Hunger (Upcoming)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="hunger1.jpg">
+      <img src="hunger2.jpg">
+      <img src="hunger3.jpg">
+      <div class="gallery-item video" data-video="https://www.youtube.com/embed/9F0cB1C2eNk?si=xXwxkgrqgy6CFBnY">▶ Video</div>
+    </div>
+
+     <div class="desc">War has ravaged Europe - but something far worse now grips the continent. A Bacterium of unknown 
+      origin has twisted the land, leaving behind only ruin, fear, and something far more sinister. In this PvPvE first 
+      person extraction RPG, players will scavenge a decaying world, face unspeakable horrors, and outlast rival survivors in desperate, 
+      high-risk expeditions where every step could be your last…
+   </div>
+    <div class="desc">
+      A Grimdark Napoleonic alternate history setting, If you enjoy Arc or Lost Rift this might be a game to keep an eye on made by the same 
+      Dev team that created Hell Let Loose.
+    </div>
+   <div class="desc">Video Credit: Riloe gaming</div>
+
+    <div class="rating">Rating: TBD</div>
+
+    <div class="spotlight-actions">
+      <a class="steam-btn" href="https://store.steampowered.com/app/1752080/HUNGER/" target="_blank">Steam</a>
+    </div>
+  </div>
+</div>
+
+<!-- VEIN -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="Vein.jpg">
+    <div class="spotlight-title">VEIN (Recommended Game) </div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="vein1.jpg">
+      <img src="vein2.jpg">
+      <img src="vein3.jpg">
+      <div class="gallery-item video" data-video="https://www.youtube.com/embed/qjLDbxB-Xt4?si=ixh_N8yfj6yFHTET">▶ Video</div>
+    </div>
+
+       <div class="desc">
+VEIN is a post-apocalyptic survival multiplayer sandbox game.
+In the near future, the apocalypse has occurred: hostile zombies roam the Earth, most people have died, and society has collapsed. You are a survivor.
+Gather supplies to survive, explore abandoned buildings, combat bandits, defend your home, and rebuild society with friends.
+As time passes and seasons change, the world of Vein does too. Persistent, long-scale random events affect gameplay.
+AI can see, hear, feel, and smell you, and react intelligently to those senses. You're being watched. Terrifying zombie variants make survival that much more difficult.
+    </div>
+    <div class="desc">Having Played around 100hrs myself, VEIN bucks the trend of early access open world survival craft games with weekly patches and a developer who listens to the community
+      while the games is still early and aesthetically is rough around the edge's (particularly the character creation) the main focus has been on optimzation and bug fixes if 
+    the developer keeps to his current path the game will easily surpass alternative indie titles in this niche. One aspect of the game this isn't mentioned on the steam page sandbox
+    mode is completely customizable from the amount of loot, the percentage between running zombies and walkers, how long before water and electricity runs out to
+    What season you start in. If you want to play in a winter hellscape with hoards of running zombies or have a peaceful world to explore that is left to the players discretion.
+    </div>
+
+    <div class="rating">Rating: ★★★★☆</div>
+
+    <div class="spotlight-actions">
+  <a href="https://store.steampowered.com/app/1857950/VEIN/" target="_blank" class="steam-btn">
+    View on Steam £17.75
+  </a>
+</div>
+  </div>
+</div>
+
+<!-- OLD WORLD MOD -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="the old world mod.png">
+    <div class="spotlight-title">The Old World Campaign for Warhammer III (Mod)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="ow1.png">
+      <img src="ow2.png">
+      <img src="ow3.png">
+      <img src="ow4.png">
+      <div class="video gallery-item" data-video="https://www.youtube.com/embed/OCF-3pfRgoE">▶ Video</div>
+    </div>
+
+    <div class="desc">
+      This new campaign includes 1317 settlements and loads of new factions. All factions included are unlocked and are playable. 
+      The map features a layout with very few compromises—everything is in its rightful place, for better or worse. 
+      Wherever possible, vanilla game mechanics have been ported and adapted to the new map's set-up. 
+    </div>
+    <div class="desc">
+      My take at time of writing I find myself on turn 120 in a VH/VH Archaon the Everchosen Campaign Reikland and Nuln Refuse to die, Kazak Azul and Sylvania have sided with them 
+      and I'm 5 turns away from the Vermintide dropping will I ever complete this Campaign I don't know am I having the best campaign I've ever had in Total war 100%.
+    </div> 
+    <div class="desc">
+      The Credits ChaosRobie and his team for the mod
+    </div>
+    <div class="desc"> 
+      Video by Colonel Damneders
+    </div> 
+    
+
+    <div class="rating">Rating: ★★★★★</div>
+
+    <div class="spotlight-actions">
+      <a class="steam-btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3081800026" target="_blank">Steam</a>
+    </div>
+  </div>
+</div>
+
+<!-- JOIN US -->
+<div class="spotlight-card">
+  <div class="spotlight-header">
+    <img src="JoinUS.jpg">
+    <div class="spotlight-title">Join Us (Upcoming)</div>
+  </div>
+
+  <div class="spotlight-content">
+    <div class="gallery">
+      <img src="JoinUS1.jpg">
+      <img src="Joinus2.jpg">
+      <img src="Joinus3.jpg">
+      <div class="video gallery-item" data-video="https://www.youtube.com/embed/qAYCqLniLaM">▶ Video</div>
+    </div>
+
+      <div class="desc">
+      HAVE YOU EVER DREAMED OF STARTING YOUR OWN CULT?
+Now you can - right from the comfort of your own home! Imagine the respect you’ll receive as an up-and-coming cult leader! Issue weird teachings to your followers! 
+Expand your territory! Build a base of operations! Perform sacrifices! Oversee a growing stockpile of military-grade weapons!
+In this sandbox survival game, your most valuable resource isn’t stones and wood… it’s human beings. 
+Every character in the world, from civilians to enemies, is a potential recruit for your growing cult.
+Turn the game world into your personal follower-farm by spreading propaganda, managing infamy, and making your cult worthy of joining. 
+Once a new follower joins your flock, you can put them to work, play as them, or enlist their support on missions. 
+All of your followers have strengths and weaknesses, and are best used in accordance with their abilities – farmers, smooth-talkers, doctors, etc. 
+Followers are your most important resource, but also your most volatile. If you don’t keep them happy, they’ll quit the cult. And remember… a cult leader without any followers is just a lonely weirdo. 
+    </div>
+    <div class="desc">Whoever designed this game has clearly Spent time in a competative gaming clan, frankly this Dark comedy fusion of co-op survival and colony sim
+       looks a lot of fun and is maybe flying under the radar for many gamers well worth wishlisting and keeping an eye on.
+    </div>
+
+    <div class="rating">Rating: TBD</div>
+
+    <div class="spotlight-actions">
+      <a class="steam-btn" href="https://store.steampowered.com/app/3401960/JOIN_US/" target="_blank">Steam</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="affiliate-disclaimer">
+Affiliate Disclaimer: Some links on this page may be affiliate links. We may earn a small commission at no extra cost to you.
+</div>
+
+<a href="#" id="back-top">Back to Top</a>
+
+<aside></aside>
+</div>
+<!-- ========================= -->
+<!-- AFFILIATE SIDE LEFT -->
+<!-- ========================= -->
+<div class="affiliate-sidebar left">
+
+  <div class="affiliate-stack">
+
+    <!-- 3 square slots -->
+   <a href="https://www.g2a.com/n/atomfull" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="atomfall AL (1).jpg" alt="Affiliate Ad">
+</a>
+
+   <a href="https://www.g2a.com/n/hold-fast" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="Holdfast AL.jpg" alt="Affiliate Ad">
+  </a>
+
+
+   <a href="https://www.g2a.com/n/ottww1" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="Over the top AL.jpg" alt="Affiliate Ad">
+</a>
+
+  </div> 
+</div>
+
+
+<!-- ========================= -->
+<!-- AFFILIATE SIDE RIGHT -->
+<!-- ========================= -->
+<div class="affiliate-sidebar right inactive">
+  <div class="affiliate-stack">
+
+    <a href="https://freecash.com/r/2MWHZH" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="FREECASH AL.jpg" alt="Affiliate Ad">
+</a>
+    <a href="YOUR_AFFILIATE_LINK" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="Turtle Beach Recon 50 AL.png" alt="Affiliate Ad">
+  
+  <a href="YOUR_AFFILIATE_LINK" target="_blank" rel="noopener noreferrer" class="affiliate-item">
+  <img src="R36SL AL.png" alt="Affiliate Ad">
+</a>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // LOAD SAVED COLOR
+  const savedColor = localStorage.getItem("nicheColor") || "#39ff14";
+  document.documentElement.style.setProperty("--main-color", savedColor);
+
+  // CARD TOGGLE (fixed: only affects clicked card)
+  document.querySelectorAll(".spotlight-header").forEach(header => {
+    header.addEventListener("click", (e) => {
+      const card = e.currentTarget.closest(".spotlight-card");
+      card.classList.toggle("active");
+    });
+  });
+
+  // LIGHTBOX
+  const lightbox = document.createElement("div");
+  lightbox.id = "lightbox";
+  document.body.appendChild(lightbox);
+
+  document.addEventListener("click", e => {
+
+    // IMAGE OPEN
+    if (e.target.matches(".gallery img")) {
+      lightbox.innerHTML = `
+        <div class="lightbox-content">
+          <div class="close-btn">&times;</div>
+          <img src="${e.target.src}">
+        </div>
+      `;
+      lightbox.classList.add("active");
+      return;
+    }
+
+    // VIDEO OPEN
+    if (e.target.closest(".video")) {
+      const url = e.target.closest(".video").dataset.video;
+
+      lightbox.innerHTML = `
+        <div class="lightbox-content">
+          <div class="close-btn">&times;</div>
+          <iframe src="${url}" allowfullscreen></iframe>
+        </div>
+      `;
+      lightbox.classList.add("active");
+      return;
+    }
+
+    // CLOSE (background or X)
+    if (
+      e.target.id === "lightbox" ||
+      e.target.classList.contains("close-btn")
+    ) {
+      lightbox.classList.remove("active");
+      lightbox.innerHTML = "";
+    }
+
+  });
+
+});
+window.addEventListener("DOMContentLoaded", () => {
+
+  const cursor = document.getElementById("crt-cursor");
+  if (!cursor) return;
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  let x = 0;
+  let y = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    x += (mouseX - x) * 0.18;
+    y += (mouseY - y) * 0.18;
+
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
+
+</script>
+
+</body>
+</html>
